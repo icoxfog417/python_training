@@ -1,6 +1,8 @@
+import sys
 import os
 from collections import Counter
 import argparse
+sys.path.append(os.path.join(os.path.dirname(__file__), "../"))
 from basic import file_service as fs
 
 
@@ -163,3 +165,19 @@ def show_aggregation(file_path, limit):
     """
     lines = fs.read_file(file_path)
     __show_aggregation(lines, limit)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="show partial lines of file")
+    parser.add_argument("file", type=str, nargs=1, help="file path")
+    parser.add_argument("limit", type=int, nargs=1, help="display limit of lines")
+    parser.add_argument('--part', default="h", help="set head(h) or tail(t)")
+    args = parser.parse_args()
+
+    show_func = None
+    if args.part == "h":
+        show_func = show_head
+    else:
+        show_func = show_tail
+
+    show_func(args.file[0], args.limit[0])
