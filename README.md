@@ -64,3 +64,18 @@ Python Basic、Extraの1までは最低限達成するライン。それ以降�
 WebAPIなどはこちらを参考にしてください
 
 [MA](http://mashupaward.jp/apis)
+
+
+# Example Answer
+
+## Python Basic
+
+* implementation: `basic/python_basic.py`
+* test: `basic/tests/test_python_basic.py`
+
+run test by below script
+
+```
+python -m unittest basic/tests/test_python_basic.py
+```
+
