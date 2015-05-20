@@ -70,12 +70,11 @@ WebAPIなどはこちらを参考にしてください
 
 ## Python Basic
 
-* implementation: `basic/python_basic.py`
-* test: `basic/tests/test_python_basic.py`
+* 実装: `basic/python_basic.py`
+* テスト: `basic/tests/test_python_basic.py`
 
-run test by below script
+テストの実行
 
 ```
 python -m unittest basic/tests/test_python_basic.py
 ```
-

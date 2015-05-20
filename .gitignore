@@ -21,3 +21,5 @@ venv
 *.iws
 
 basic/tests/*.txt
+restaurants.html
+api_key.json
