@@ -30,13 +30,13 @@ class GurunabiService():
         :return:
         """
 
-        self.keyid = ""
+        self.__keyid = ""
 
         my_dir = os.path.dirname(__file__)
         api_key_path = os.path.join(my_dir, "api_key.json")
         with open(api_key_path) as api_key_file:
             api_key = json.load(api_key_file)
-            self.keyid = api_key["keyid"]
+            self.__keyid = api_key["keyid"]
 
     def __search(self, api_type, key_words, optional, page_size, offset):
         """
@@ -50,7 +50,7 @@ class GurunabiService():
         """
 
         required = {
-            "keyid": self.keyid,
+            "keyid": self.__keyid,
             "hit_per_page": page_size,
             "offset_page": offset,
             "freeword": ",".join(key_words),
@@ -125,7 +125,7 @@ class GurunabiService():
         :return:
         """
         params = {
-            "keyid": self.keyid,
+            "keyid": self.__keyid,
             "shop_id": restaurant.id,
             "hit_per_page": restaurant.CHEERS_LIMIT,
             "offset_page": 1,
