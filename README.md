@@ -78,3 +78,42 @@ WebAPIなどはこちらを参考にしてください
 ```
 python -m unittest basic/tests/test_python_basic.py
 ```
+
+コマンドライン引数を取る課題(5・6)については、コンソールから以下のように実行して動作を確認できます(-hで利用方法の説明を表示可能です)。
+
+```
+# 上位5件を表示
+python basic/python_basic.py ./data/address.txt 5 --part h
+
+# 下位5件を表示
+python basic/python_basic.py ./data/address.txt 5 --part t
+```
+
+## Python Extra
+
+ぐるなびAPIのキーが必要になります。以下の開発者用サイトから登録してAPIキーを取得してください。  
+
+[ぐるなびWebサービス for Developer](http://api.gnavi.co.jp/api/)
+
+`gurunabi_service.py`と同じフォルダに以下フォーマットで`api_key.json`を作成し、取得したAPIキーを設定してください。
+
+```
+{
+  "keyid": "xxxx"
+}
+```
+
+* 実装: `basic/python_extra.py`
+* テスト: `extra/tests/test_python_extra.py`
+
+テストの実行
+
+```
+python -m unittest extra/tests/test_python_extra.py
+```
+
+コマンドラインツールとしての利用(-hで利用方法の説明を表示可能です)
+
+```
+python extra/python_extra.py 和食
+```

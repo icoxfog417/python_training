@@ -15,6 +15,7 @@ class TestPythonBasic(unittest.TestCase):
         print("1. line count of {0} is {1}".format(file_name, line_count))
 
     def test_assignment2(self):
+        print("2. replaced tab to space")
         __file_name = "2_tab_to_space.txt"
         __file_path = os.path.join(self.OUT_DIR, __file_name)
 
@@ -24,13 +25,13 @@ class TestPythonBasic(unittest.TestCase):
         # confirmation
         replaced_file = fs.read_file(__file_path)
         self.assertTrue(sum(["\t" in ln for ln in replaced_file]) == 0)
-        print("2. replaced tab to space")
 
     def test_assignment3_4(self):
+        print("3. split columns and save these to file")
         file_names = pyb.columns_to_file(self.FILE_PATH, self.OUT_DIR)
         file_paths = [os.path.join(self.OUT_DIR, fn) for fn in file_names]
-        print("3. split columns and save these to file")
 
+        print("4. merge column files")
         # confirmation (compare with original file)
         original = fs.read_file(self.FILE_PATH)
         restored = pyb.merge_column_files(file_paths)
@@ -39,7 +40,6 @@ class TestPythonBasic(unittest.TestCase):
         for i, t in enumerate(original):
             self.assertEqual(t, restored[i])
 
-        print("4. merge column files")
 
     def test_assignment5(self):
         print("5. show head n lines")
@@ -54,21 +54,21 @@ class TestPythonBasic(unittest.TestCase):
         pyb.show_first_column_aggregation(self.FILE_PATH, self.DISPLAY_LIMIT)
 
     def test_assignment8(self):
-        order_by_first = pyb.sort_lines(self.FILE_PATH)
         print("8. order by first columns")
+        order_by_first = pyb.sort_lines(self.FILE_PATH)
         for ln in order_by_first[:self.DISPLAY_LIMIT]:
             print(ln)
 
     def test_assignment9(self):
-        order_by_second_and_first = pyb.sort_lines(self.FILE_PATH, order_indexes=(1, 0))
         print("9. order by second and first")
+        order_by_second_and_first = pyb.sort_lines(self.FILE_PATH, order_indexes=(1, 0))
         for ln in order_by_second_and_first[:self.DISPLAY_LIMIT]:
             print(ln)
 
     def test_assignment10(self):
+        print("10. aggregate col2.txt")
         target_file = os.path.join(self.OUT_DIR, "col2.txt")
         if os.path.isfile(target_file):
-            print("10. aggregate col2.txt")
             pyb.show_aggregation(target_file, self.DISPLAY_LIMIT)
         else:
             print("col2.txt is not exist")
